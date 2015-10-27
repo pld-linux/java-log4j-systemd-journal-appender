@@ -16,6 +16,7 @@ Group:		Libraries/Java
 Source0:	https://github.com/bwaldvogel/log4j-systemd-journal-appender/archive/%{commit}/%{srcname}.tar.gz
 # Source0-md5:	d1cc409f362f86f2691f90e759dd0957
 URL:		https://github.com/bwaldvogel/log4j-systemd-journal-appender
+BuildRequires:	gradle
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
