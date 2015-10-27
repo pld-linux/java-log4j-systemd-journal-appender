@@ -1,0 +1,14 @@
+diff -dur log4j-systemd-journal-appender-60bc8eccbc031616504f812ec0d3c8902d3ce79f.orig/build.gradle log4j-systemd-journal-appender-60bc8eccbc031616504f812ec0d3c8902d3ce79f/build.gradle
+--- log4j-systemd-journal-appender-60bc8eccbc031616504f812ec0d3c8902d3ce79f.orig/build.gradle	2015-09-30 23:59:39.000000000 +0200
++++ log4j-systemd-journal-appender-60bc8eccbc031616504f812ec0d3c8902d3ce79f/build.gradle	2015-10-27 10:42:51.000000000 +0100
+@@ -78,7 +78,9 @@
+ }
+ 
+ repositories {
+-    mavenCentral()
++    flatDir {
++        dirs '/usr/share/java'
++    }
+ }
+ 
+ task wrapper(type: Wrapper) {

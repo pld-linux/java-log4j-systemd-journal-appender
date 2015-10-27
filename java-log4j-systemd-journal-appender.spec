@@ -1,7 +1,7 @@
 # Conditional build:
 %bcond_without	javadoc		# don't build javadoc
 %bcond_without	source		# don't build source jar
-%bcond_without	tests		# don't build and run tests
+%bcond_with	tests		# build and run tests
 
 %define		srcname		log4j-systemd-journal-appender
 %define		commit		60bc8eccbc031616504f812ec0d3c8902d3ce79f
@@ -15,8 +15,12 @@ License:	BSD
 Group:		Libraries/Java
 Source0:	https://github.com/bwaldvogel/log4j-systemd-journal-appender/archive/%{commit}/%{srcname}.tar.gz
 # Source0-md5:	d1cc409f362f86f2691f90e759dd0957
+Patch0:		local_deps_only.patch
+Patch1:		no_nexus.patch
 URL:		https://github.com/bwaldvogel/log4j-systemd-journal-appender
 BuildRequires:	gradle
+BuildRequires:	java-jna
+BuildRequires:	java-log4j
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
@@ -82,11 +86,13 @@ Kod źródłowy %{srcname}.
 
 %prep
 %setup -q -n %{srcname}-%{commit}
+%patch0 -p1
+%patch1 -p1
 
 %build
 export JAVA_HOME="%{java_home}"
 
-gradle jar %{?with_javadoc:javadoc} %{?with_source:sourcesJar}
+gradle jar %{?with_javadoc:javadoc} %{?with_source:sourcesJar} %{?with_tests:test}
 
 %install
 rm -rf $RPM_BUILD_ROOT
