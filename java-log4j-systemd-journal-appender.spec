@@ -10,7 +10,7 @@ Summary:	Log4j appender for systemd-journal
 Summary(pl.UTF-8):	Appended log4j dla journala systemd
 Name:		java-%{srcname}
 Version:	1.3.1
-Release:	0.1
+Release:	1
 License:	BSD
 Group:		Libraries/Java
 Source0:	https://github.com/bwaldvogel/log4j-systemd-journal-appender/archive/%{commit}/%{srcname}.tar.gz
@@ -19,7 +19,7 @@ Patch0:		local_deps_only.patch
 Patch1:		no_nexus.patch
 URL:		https://github.com/bwaldvogel/log4j-systemd-journal-appender
 BuildRequires:	gradle
-BuildRequires:	java-jna
+BuildRequires:	java-jna >= 4.2.0
 BuildRequires:	java-log4j
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
@@ -28,6 +28,8 @@ BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	rpmbuild(macros) >= 1.555
 %endif
 BuildRequires:	sed >= 4.0
+Requires:	java-jna >= 4.2.0
+Requires:	java-log4j
 Requires:	jpackage-utils
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
