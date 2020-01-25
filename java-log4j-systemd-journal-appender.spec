@@ -5,7 +5,6 @@
 
 %define		srcname		log4j-systemd-journal-appender
 %define		commit		60bc8eccbc031616504f812ec0d3c8902d3ce79f
-%include	/usr/lib/rpm/macros.java
 Summary:	Log4j appender for systemd-journal
 Summary(pl.UTF-8):	Appended log4j dla journala systemd
 Name:		java-%{srcname}
